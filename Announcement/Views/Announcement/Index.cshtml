@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Announcement List";
+}
+
+
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Announcement List</h2>
+    </div>
+    <div class="col-3">
+        
+            @Html.ActionLink("CREATE", "Create", null, new { @class = "btn btn-primary btn-large" })
+
+    </div>
+
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            <table class="table table-striped border">
+                <tr class="table-secondary"></tr>
+                @foreach (var item in ViewBag.Announcements)
+                {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Date_Added
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("EDIT", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-large" })
+                        @Html.ActionLink("REMOVE", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-large" })
+
+                    </td>
+                </tr>
+                }
+            </table>
+        </form>
+    </div>
+</div>
